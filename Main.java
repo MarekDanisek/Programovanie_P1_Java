@@ -4,38 +4,72 @@ import java.util.Scanner;
 
 public class Main {
 
+    static int scitaj(int prve_cislo, int druhe_cislo) {
+        return prve_cislo + druhe_cislo;
+    }
+
+
+    static int odcitaj(int prve_cislo, int druhe_cislo) {
+        return prve_cislo - druhe_cislo;
+    }
+
+
+    static int nasob(int prve_cislo, int druhe_cislo) {
+        return prve_cislo * druhe_cislo;
+    }
+
+
+    static int vydel(int prve_cislo, int druhe_cislo) {
+        return prve_cislo / druhe_cislo;
+    }
+
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Vitaj v kalkulačke!");
-        System.out.println("Zadaj prvé číslo:");
-        int prve_cislo = scanner.nextInt();
+        boolean pokracovat = true;
 
-        System.out.println("Zadaj druhé číslo:");
-        int druhe_cislo = scanner.nextInt();
+        while (pokracovat) {
 
-        System.out.println("Vyber si operáciu: +,-,*,/");
-        String operacia = scanner.next();
+            System.out.println("Vitaj v kalkulačke!");
 
-        int vysledok;
+            System.out.println("Zadaj prvé číslo:");
+            int prveCislo = scanner.nextInt();
 
-        if (operacia.equals("+")) {
-            vysledok = prve_cislo + druhe_cislo;
+            System.out.println("Zadaj druhé číslo:");
+            int druheCislo = scanner.nextInt();
+
+            System.out.println("Vyber si operáciu: +,-,,/");
+            String operacia = scanner.next();
+
+            int vysledok = 0;
+
+            if (operacia.equals("+")) {
+                vysledok = scitaj(prveCislo, druheCislo);
+
+            } else if (operacia.equals("-")) {
+                vysledok = odcitaj(prveCislo, druheCislo);
+
+            } else if (operacia.equals("")) {
+                vysledok = nasob(prveCislo, druheCislo);
+
+            } else if (operacia.equals("/")) {
+                vysledok = vydel(prveCislo, druheCislo);
+
+            } else {
+                System.out.println("Neplatná operácia!");
+                continue;
+            }
+
             System.out.println("Výsledok: " + vysledok);
-        } else if (operacia.equals("-")) {
-            vysledok = prve_cislo - druhe_cislo;
-            System.out.println("Výsledok: " + vysledok);
-        } else if (operacia.equals("/")) {
-            vysledok = prve_cislo / druhe_cislo;
-            System.out.println("Vysledok: " + vysledok);
-        } else if (operacia.equals("*")){
-            vysledok = prve_cislo * druhe_cislo;
-            System.out.println("Vysledok: " + vysledok);
-        }
 
-        else {
-            System.out.println("Neplatná operácia!");
+            System.out.print("Chceš zastaviť? ano/nie: ");
+            String odpoved = scanner.next();
+
+            if (odpoved.equals("ano")) {
+                pokracovat = false;
+            }
         }
 
         scanner.close();

@@ -1,0 +1,2 @@
+Ahoj! Tento súbor bol vytvorený v JetBrains IDE.
+Git v tomto prostredí funguje skvele.
